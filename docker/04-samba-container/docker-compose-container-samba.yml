@@ -1,0 +1,8 @@
+services:
+  amazonlinux-ssh-jdk:
+    build: .
+    container_name: amazon_ssh_jdk
+    tty: true
+    ports: # Sambaで使用するポート番号
+      - "139:139"
+      - "445:445"

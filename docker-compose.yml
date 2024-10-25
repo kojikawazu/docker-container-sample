@@ -1,0 +1,5 @@
+services:
+  amazonlinux-ssh-jdk:
+    build: .
+    container_name: amazon_ssh_jdk
+    tty: true

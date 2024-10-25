@@ -1,0 +1,17 @@
+services:
+  amazonlinux-ssh-jdk:
+    build: .
+    container_name: amazon_ssh_jdk
+    tty: true
+    cap_add:
+      - SYS_TIME
+
+  ntp-client:
+    image: amazonlinux:2
+    container_name: ntp_client
+    depends_on:
+      - amazonlinux-ssh-jdk
+    tty: true
+    cap_add:
+      - SYS_TIME
+    command: sh -c "yum install -y chrony && echo 'server amazon_ssh_jdk prefer iburst' >> /etc/chrony.conf && chronyd && tail -f /dev/null"

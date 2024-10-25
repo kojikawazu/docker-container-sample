@@ -1,0 +1,13 @@
+services:
+  amazonlinux-ssh-jdk:
+    build: .
+    container_name: amazon_ssh_jdk
+    tty: true
+    privileged: true  # NFSサーバーには特権アクセスが必要
+    ports:
+      - "2049:2049"  # NFSのデフォルトポート
+    volumes:
+      - nfs_data:/srv/nfs_share
+
+volumes:
+  nfs_data:
